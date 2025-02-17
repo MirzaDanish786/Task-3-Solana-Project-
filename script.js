@@ -174,54 +174,7 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-//
-document.addEventListener("DOMContentLoaded", () => {
-  let communitySection = document.querySelector(
-    ".communitySectionContainerWrapper"
-  );
-  let numbers = document.querySelectorAll(".numbers");
 
-  let observe = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateNumbers();
-          observe.unobserve(communitySection);
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-    }
-  );
-
-  let animateNumbers=()=>{
-    numbers.forEach((number)=>{
-      let targetText = number.textContent;
-      let targetValue = parseFloat(targetText.replace(/[^0-9.]/g), "");
-      let prefix = targetText.startsWith("$") ? "$" : "";
-      let suffix = targetText.replace(/[0-9.]/g,"").replace(prefix, "");
-
-      let current = 0;
-      let increment  = targetText/300;
-
-      let updateNumber=()=>{
-        current+=increment;
-        if(current < targetValue){
-          number.textContent = prefix + current + suffix; 
-          setTimeout((e) => {
-            updateNumber();
-          }, 60);
-        }
-      
-      }
-      updateNumber();
-    })
-  }
-
-
-
-});
 
 // Code for animate the numbers of community section:
 document.addEventListener("DOMContentLoaded", () => {
@@ -251,9 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function animateNumbers() {
     numbers.forEach((number) => {
       const targetText = number.textContent;
+      console.log(targetText );
+      
       const targetValue = parseFloat(targetText.replace(/[^0-9.]/g, ""));
       const prefix = targetText.startsWith("$") ? "$" : "";
+      console.log(prefix );
+      
       const suffix = targetText.replace(/[0-9.]/g, "").replace(prefix, "");
+      console.log(suffix );
+      
 
       const increment = targetValue / 300;
       let current = 0;
