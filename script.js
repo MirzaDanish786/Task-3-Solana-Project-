@@ -82,6 +82,67 @@ function showSlides(n) {
   }
   for (i = 0; i < sliderCardSection_Card.length; i++) {
     sliderCardSection_Card[i].style.display = "none";
+    sliderCardSection_Card[i].style.opacity = "0";
   }
   sliderCardSection_Card[slideIndex - 1].style.display = "flex";
+  sliderCardSection_Card[slideIndex - 1].style.opacity = "1";
+  sliderCardSection_Card[slideIndex - 1].style.trasition = "all .3s";
 }
+
+// Code for buildForGrowthSection_Upper_FilterButton:
+// Code for buildForGrowthSection_Upper_FilterButton:
+let buildForGrowthSection_Upper_FilterButton = document.getElementsByClassName(
+  "buildForGrowthSection_Upper_FilterButton"
+);
+let buildForGrowthSection_CardSection_Right_Text =
+  document.getElementsByClassName(
+    "buildForGrowthSection_CardSection_Right_Text"
+  )[0];
+
+Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e, btn_index) => {
+  e.addEventListener("click", (item) => {
+    console.log(btn_index);
+
+    buildForGrowthSection_CardSection_Right_Text.innerHTML = "";
+
+    // Removing the  oulines on the buttons
+    Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e) => {
+      e.style.outline = "none";
+    });
+
+    let append = "";
+    if (btn_index == 0) {
+      append = "Payment";
+    } else if (btn_index == 1) {
+      append = "Gaming";
+    } else if (btn_index == 2) {
+      append = "NFTs";
+    } else if (btn_index == 3) {
+      append = "DeFi";
+    } else {
+      append = "DAOs";
+    }
+
+    buildForGrowthSection_CardSection_Right_Text.innerHTML = `<b>${append}</b>`;
+    buildForGrowthSection_Upper_FilterButton[btn_index].style.outline =
+      "2px solid #A962FF";
+  });
+});
+
+
+
+// 
+let isLangDropDown = false;
+let footerSection_Box4_DropDownIcon = document.getElementsByClassName("footerSection_Box4_DropDownIcon")[0];
+let icon = footerSection_Box4_DropDownIcon.getElementsByTagName("img")[0];
+icon.addEventListener('click',(e)=>{
+  if(!isLangDropDown){
+    let footerSection_Box4_DropDownIcon_Menu = document.getElementsByClassName("footerSection_Box4_DropDownIcon_Menu")[0].style.display = "block";
+    isLangDropDown = true;
+  }
+  else{
+    let footerSection_Box4_DropDownIcon_Menu = document.getElementsByClassName("footerSection_Box4_DropDownIcon_Menu")[0].style.display = "none";
+    isLangDropDown = false;
+  }
+})
+

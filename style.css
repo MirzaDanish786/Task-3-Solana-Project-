@@ -205,6 +205,7 @@ button{
 .companyListSection_Logos ul{
     display: flex;
     gap: 30px;
+    padding: 5px 20px;
 }
 .companyListSection_Logos ul li{
     /* width: 88.88px; */
@@ -222,7 +223,14 @@ button{
     position: relative;
     display: flex;
 }
-
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
 .sliderCardSection_Card{
     padding: 40px;
     background-color: #1B1622;
@@ -338,6 +346,7 @@ button{
     margin: auto;
     display: flex;
     justify-content: space-between;
+    gap: 50px;
 }
 .communitySectionContainer_Left {
     width: 30%;
@@ -419,6 +428,8 @@ button{
     width: 100%;
     justify-items: center;
     align-items: end;
+    gap: 20px;
+
 }
 .massAdoptionSection_Left{
     width: 35%;
@@ -538,13 +549,32 @@ button{
     grid-area: mainCard;
 }
 .caseStudiesSection_Grid_MainCard_Left{
+    padding: 30px;
     width: 50%;
+    height: 300px;
+    background-image: linear-gradient(to right, #141921, rgba(255, 255, 253, 0.014)), url(images/caseStudiesSection_Grid_MainCard_img.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
 }
-.caseStudiesSection_Grid_MainCard_Left img{
-    width: 100%;
-    object-fit: contain;
-    margin-bottom: -4px;
+.caseStudiesSection_Grid_MainCard_Left_Content{
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
 }
+.caseStudiesSection_Grid_MainCard_Left_Heading{
+    display: flex;
+    gap: 10px;
+}
+.caseStudiesSection_Grid_MainCard_Left_Text{
+    font-size: 70px;
+    font-weight: 600;
+}
+
 .caseStudiesSection_Grid_MainCard_Right{
     width: 50%;
     display: flex;
@@ -573,21 +603,37 @@ button{
     grid-area: subCard3;
     
 }
+.caseStudiesSection_Grid_subCards_img_bg{
+    background-image: linear-gradient(to right, #141921, rgba(255, 255, 253, 0.014)), url("images/caseStudiesSection_Grid_subCards_img_bg.jpeg");
+    height: 50%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   padding: 30px;
+   border-top-left-radius: 12px;
+   border-top-right-radius: 12px;
+}
+.caseStudiesSection_Grid_subCards_img_bg_Heading img{
+    width: 20px;
 
-.caseStudiesSection_Grid_subCards_img{
-    width: 100%;
-    /* height: 190px; */
 }
-.caseStudiesSection_Grid_subCards_img img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+.caseStudiesSection_Grid_subCards_img_bg_Heading{
+    display: flex;
+    gap: 10px;
 }
+.caseStudiesSection_Grid_subCards_img_bg_Text{
+    font-size: 50px;
+    font-weight: 600;
+}
+
 .caseStudiesSection_Grid_subCards_TextContainer{
     display: flex;
     padding: 16px;
+    gap: 10px;
 }
 .caseStudiesSection_Grid_subCards_Text{
     font-size: 23px;
@@ -629,8 +675,54 @@ button{
     border-radius: 12px;
 }
 .buildForGrowthSection_CardSection_Left{
+    background-image:linear-gradient(to right, #141921, rgba(255, 255, 253, 0.014)), url("images/caseStudiesSection_Grid_MainCard_img.jpeg");
     width: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: flex;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    justify-content: center;
+    align-items: center;
 }
+
+.buildForGrowthSection_CardSection_Left_LogoContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo1{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+}
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container {
+    width: 60px;
+}
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container img{
+    width: 100%;
+    object-fit: contain;
+}
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo1_Text{
+    font-size: 55px;
+    font-weight: 600;
+}
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo_Diveider{
+    font-size: 40px;
+
+}
+
+
+.buildForGrowthSection_CardSection_Left_LogoContainer_Logo2 img{
+    width: 100%;
+    object-fit: contain;
+}
+
+
 .buildForGrowthSection_CardSection_Left_imgContainer{
     width: 100%;
 
@@ -666,6 +758,13 @@ button{
     padding: 16px;
     border-radius: 16px;
 }
+.buildForGrowthSection_CompanyList_imgContainer{
+    width: 15%;
+}
+.buildForGrowthSection_CompanyList_imgContainer img{
+    width: 100%;
+    object-fit: contain;
+}
 
 /* Styling of thirivingCommunitySection */
 .thirivingCommunitySection_Wrapper{
@@ -676,8 +775,12 @@ button{
     background-position: center;
     background-size: cover;
 }
-.thirivingCommunitySection{
+.thirivingCommunitySection_Heading{
     width: 80%;
+    margin: auto;
+}
+.thirivingCommunitySection{
+    width: 100vw;
     margin: auto;
 }
 .thirivingCommunitySection_GridImages{
@@ -686,8 +789,37 @@ button{
     "card1 card3 card3 card4 card6 card6"
     "card2 card3 card3 card5 card6 card6";
     gap: 20px;
-    overflow-x: scroll;
     margin-top: 30px;
+    animation: slider 15s linear infinite;
+    position: relative;
+    width:fit-content;
+    /* overflow-x: auto; */
+}
+.thirivingCommunitySection_GridImages:hover{
+    animation-play-state: paused;
+}
+
+
+/* .thirivingCommunitySection_GridImages_Card1,.thirivingCommunitySection_GridImages_Card2_imgContainer, .thirivingCommunitySection_GridImages_Card4_imgContainer,.thirivingCommunitySection_GridImages_Card5, .thirivingCommunitySection_GridImages_Card6_imgContainer{
+    animation: slider 10s linear infinite;
+} */
+
+
+@keyframes slider {
+    /* 0%{
+       left: -100vw;
+        
+    }
+    100%{
+        left: 100vw;
+        
+    } */
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(100%);
+    }
 }
 /* Card1 */
 .thirivingCommunitySection_GridImages_Card1{
@@ -814,9 +946,9 @@ button{
 .footerSectionWrapper{
     height: 424px;
     width: 100%;
-    background: linear-gradient(0deg, #000508, #000508),
-radial-gradient(141.42% 141.42% at 100% 100%, #3A233F 0%, rgba(0, 0, 0, 0) 24.59%),
-radial-gradient(50% 50% at 0% 100%, #271D3B 0%, rgba(0, 0, 0, 0) 62.59%);
+    background-image: url("images/Footer\ bg.svg");
+    background-position: center;
+    background-size: cover;
 }
 .footerSection{
     width: 80%;
@@ -824,7 +956,8 @@ radial-gradient(50% 50% at 0% 100%, #271D3B 0%, rgba(0, 0, 0, 0) 62.59%);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 50px
+    gap: 50px;
+    padding:30px 0px;
 }
 /* Box 1 */
 .footerSection_Box1{
@@ -893,6 +1026,7 @@ radial-gradient(50% 50% at 0% 100%, #271D3B 0%, rgba(0, 0, 0, 0) 62.59%);
 .footerSection_Box4{
     display: flex;
     gap: 4px;
+    position: relative;
 }
 .Box2_Box3_Box4_Wrapper{
     display: flex;
@@ -901,4 +1035,409 @@ radial-gradient(50% 50% at 0% 100%, #271D3B 0%, rgba(0, 0, 0, 0) 62.59%);
 .footerSection_Box4_DropDownIcon{
     cursor: pointer;
 }
+.footerSection_Box4_DropDownIcon_Menu{
+    background-color: #1B1622;
+    position: absolute;
+    padding: 5px;
+    top: 38px;
+    border: 1px solid white;
+    border-radius: 8px;
+    display: none;
 
+}
+.footerSection_Box4_DropDownIcon_Menu ul{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footerSection_Box4_DropDownIcon_Menu ul li{
+    list-style: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.footerSection_Box4_DropDownIcon_Menu ul li:hover{
+    background-color: black;
+    transition: all .3s;
+}
+
+
+/* Media Queries  */
+@media only screen and (max-width: 1200px) and (min-width: 768px){
+    .companyListSection_Logos ul{
+        gap: 20px;
+        padding: 0px 23px;
+    }
+
+    /* sliderCardSection */
+    .sliderCardSection_Card{
+        padding: 20px;
+        gap: 30px;
+    }
+    .sliderCardSection_Card_TextContainer_Heading{
+        font-size: 23px;
+    }
+    .sliderCardSection_Card_TextContainer_Text{
+        font-size: 14px;
+    }
+    .sliderCardSection_Card_TextContainer_Button{
+        margin-top: 5px;
+    }
+   
+    .sliderCardSection_Card_img img{
+        object-fit: cover;
+    }
+}
+
+/* Fixing of the Case studies grid: */
+@media (max-width: 1300px){
+
+    /* communitySectionContainer */
+    .communitySectionContainer_Left{
+        width: 50%;
+    }
+
+
+    /* caseStudiesSection */
+    .caseStudiesSection_Grid_MainCard_Left{
+        padding: 20px;
+    }
+    .caseStudiesSection_Grid_MainCard_Right_Content{
+        padding: 0px;
+    }
+    .caseStudiesSection_Grid_subCards_img_bg{
+        padding: 20px;
+    }
+    .caseStudiesSection_Grid_subCards_Text{
+        font-size: 18px;
+    }
+    .caseStudiesSection_Grid_MainCard_Left_Text{
+        font-size: 60px;
+    }
+    .caseStudiesSection_Grid_subCards_img_bg_Text{
+        font-size: 40px;
+    }
+
+    /*  buildForGrowthSection */
+    .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1_Text{
+        font-size: 40px;
+    }
+    .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container{
+        width: 40px;
+    }
+    .buildForGrowthSection_CardSection_Left_LogoContainer{
+        gap: 20px;
+    }
+
+}
+@media (max-width: 1024px){
+    :root{
+       --buttonPading: 12.5px 15px;
+    }
+    .caseStudiesSection_Grid_MainCard_Left{
+        height: 230px;
+    }
+    .caseStudiesSection_Grid{
+        column-gap: 15px;
+    }
+    .caseStudiesSection_Grid_subCards_img_bg_Text{
+        font-size: 30px;
+    }
+    .caseStudiesSection_Grid_subCards_Text{
+        font-size: 16px;
+    }
+    .caseStudiesSection_Grid_MainCard_Right{
+        font-size: 23px;
+        padding: 20px;
+    }
+    .caseStudiesSection_Grid_subCards_img_bg{
+        padding: 16px;
+    }
+    .caseStudiesSection_Grid_subCards{
+        height: 313px;
+    }
+    .subHeading{
+        font-size: 35px;
+    }
+    .buildForGrowthSection_Upper_FilterButton a{
+        font-size: 12px;
+    }
+    }
+
+    @media (max-width: 960px){
+        /* Community Sectiono: */
+        .numbers{
+            font-size: 70px;
+        }
+        .numberHeading{
+            font-size: 14px;
+        }
+        .communitySectionContainer_Left {
+            width: 50%;
+        }
+
+
+
+        .thirivingCommunitySection_Description{
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 800px){
+
+
+        /* Hero Section */
+        .mainHeading{
+            font-size: 45px;
+        }
+        .text{
+            font-size: 16px;
+        }
+        
+        .caseStudiesSection_Button a{
+            font-size: 12px;
+        }
+
+        /*sliderCardSection:*/
+        .sliderCardSection_Card{
+            flex-direction: column;
+            padding: 20px;
+            gap: 30px;
+        } 
+        .sliderCardSection_Card_img{
+            width: 100%;
+            height: 50%;
+        }
+        .sliderCardSection_Card_TextContainer{
+            width: 100%;
+            gap: 20px;
+        }
+
+        
+        /* Changing width 80% to 90% of the containers */
+        .communitySectionContainerWrapper{
+            margin-top: 0px;
+        }
+        .communitySectionContainer{
+            width: 90%;
+            flex-direction: column;
+        }
+        .communitySectionContainer_Right{
+            align-items: center;
+        }
+        .numbers{
+            font-size: 90px;
+            width: 400px;
+        }
+        .numberHeading{
+            font-size: 20px;
+        }
+
+        /* massAdoption */
+        .massAdoptionSection{
+            width: 90%;
+            flex-direction: column;
+        }
+        .massAdoptionSection_Left{
+            width: 100%;
+        }
+        .massAdoptionSection_CardGrid {
+            justify-items: flex-start;
+            margin-top: 50px;
+        }
+
+        /* casestudiessection */
+        .caseStudiesSection {
+            width: 90%;
+        }
+        .buildForGrowthSection{
+            width: 90%;
+        }
+        .thirivingCommunitySection_Heading{
+            width: 90%;
+        }
+        .thirivingCommunitySection_DescriptionSection{
+            width: 90%;
+        }
+
+
+        /* buildForGrowthSection */
+        .buildForGrowthSection_Upper{
+            flex-direction: column;
+            gap: 20px;
+        }
+        .buildForGrowthSection_CardSection{
+            flex-direction: column;
+        }
+        .buildForGrowthSection_CardSection_Left{
+            width: 100%;
+        }
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container{
+            width: 55px;
+        }
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1_Text{
+            font-size: 48px;
+        }
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo2{
+            width: 150px;
+        }
+        .buildForGrowthSection_CardSection_Right{
+            width: 100%;
+        }
+
+        /* thirivingCommunitySection */
+        .thirivingCommunitySection_Description{
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 750px){
+        .caseStudiesSection_Grid{
+            /* display: grid;
+            grid-template-areas:
+                                "mainCard "
+                                "subCard1"
+                                "subCard2"
+                                "subCard3"; */
+            display: flex;
+            flex-direction: column;
+        }
+        .caseStudiesSection_Grid_MainCard_Right_Content{
+            width: 100%;
+        }
+        .caseStudiesSection_Grid_subCards_TextContainer{
+            justify-content: space-between;
+        }
+        .caseStudiesSection_Grid_MainCard_Right_Content{
+            font-size: 30px;
+        }
+        .caseStudiesSection_Grid_subCards_img_bg_Text{
+            font-size: 42px;
+        }
+        .caseStudiesSection_Grid_subCards_Text {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: 630px){
+
+        /* Hero Section */
+        .mainHeading{
+            font-size: 34px;
+        } 
+        .text{
+            font-size: 14px;
+        }
+        .companyListSection_Logos ul{
+            padding: 0px 10px;
+            gap: 10px;
+        }
+
+        /* Community Section: */
+        .numbers{
+            font-size: 70px;
+            width: 318px;
+        }
+        .numberHeading{
+            font-size: 18px;
+        }
+
+        /* mass adoptino section */
+        .massAdoptionSection_Card{
+            width: auto;
+        }
+        .massAdoptionSection_Card_Text{
+            font-size: 14px;
+        }
+        .massAdoptionSection_Card_Heading{
+            font-size: 22px;
+        } 
+
+
+        .caseStudiesSection_Grid_MainCard{
+            flex-direction: column;
+        }
+        .caseStudiesSection_Grid_MainCard_Left{
+            width: 100%;
+        }
+        .caseStudiesSection_Grid_MainCard_Right{
+            width: 100%;
+            height: 230px;
+        }
+        .buildForGrowthSection_CardSection_Right {
+            padding: 20px;
+        }
+        .buildForGrowthSection_CompanyList_imgContainer{
+            width: 20%;
+        } 
+
+
+    }
+    @media (max-width: 530px){
+        .subHeading{
+            font-size: 30px;
+        }
+        /* Hero Section */
+        .mainBannerContainerContent_Text {
+            width: 80%;
+        }
+        .mainBannerContainerContent_Buttons {
+            font-size: 12px;
+        }
+        .companyListSection_Text{
+            font-size: 10px;
+        }
+        /* sliderCard */
+        .sliderCardSection_Card{
+            padding: 10px;
+        }
+        .sliderCardSection_Card_TextContainer_Heading{
+            font-size: 20px;
+        }
+        .sliderCardSection_Card_TextContainer{
+            gap: 10px;
+        } 
+        .sliderCardSection_Card_TextContainer_Button{
+            margin-top: 15px;
+        }
+
+        /* Community SEction */
+        .communitySectionContainer_Left{
+            width: 100%;
+        }
+        .numberHeading {
+            font-size: 15px;
+        }
+
+
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container {
+            width: 40px;
+        }
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1_Text{
+            font-size: 40px;
+        } 
+        .buildForGrowthSection_CardSection_Left_LogoContainer_Logo2{
+            width: 115px;
+        }
+        .buildForGrowthSection_CardSection_Left_LogoContainer{
+            gap: 10px;
+        }
+        .buildForGrowthSection_Upper_FilterButtonSection{
+            gap: 10px;
+        }
+        .buildForGrowthSection_CompanyList{
+            padding: 10px;
+        }
+        .buildForGrowthSection_CompanyList_imgContainer {
+            width: 23%;
+        }
+    }
+
+
+@media only screen and (max-width: 950px) and (min-width: 768px){
+    .mainHeading{
+        font-size: 53px;
+    }
+    .text{
+        font-size: 16px;
+    }
+}
