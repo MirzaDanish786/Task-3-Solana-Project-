@@ -30,6 +30,9 @@ header {
     border: 2px solid black;
     background-color: black;
     height: 67px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 nav {
     height: 100%;
@@ -95,6 +98,9 @@ header nav ul li {
     flex-direction: column;
     gap: 10px;
     width: 200px;
+    /* max-height: 0px; */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 .navDropDownDisable div{
     padding: 5px;
@@ -109,7 +115,54 @@ header nav ul li {
 .navDropDownEnable{
     display: flex;
     border-radius: 8px;
+    height: auto;
+    padding: 10px 0px;
+    transition: all 0.3s ease-out;
 }
+
+/* No scroll */
+.no_scroll{
+    overflow: hidden;
+}
+/* Hamburger: */
+.hamburger_li{
+    display: none;
+}
+.hamburger{
+    width: 40px;
+}
+.hamburger img{
+    width: 100%;
+    object-fit: contain;
+}
+.hamburger_Content{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    right: -100%;
+    top: 65px;
+    transition: all .3s;
+}
+.hamburger_Active{
+    right: 0;
+}
+.hamburger_Content ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
 /* Overall fixing: */
 li a{
     text-decoration: none;
@@ -120,6 +173,7 @@ button a{
     color: var(--textColor);
 }
 button{
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
@@ -356,6 +410,7 @@ button{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 50%;
 }
 .activeAccounts{
     display: flex;
@@ -519,6 +574,7 @@ button{
 .caseStudiesSection_Upper{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
 }
 .caseStudiesSection_Button{
@@ -1175,15 +1231,52 @@ button{
         .communitySectionContainer_Left {
             width: 50%;
         }
-
-
-
         .thirivingCommunitySection_Description{
             width: 100%;
+        }
+        .footerSectionWrapper{
+            height: auto;
         }
     }
 
     @media (max-width: 800px){
+        .navNavigationsItems{
+            display: none;
+        }
+        .hamburger_li{
+            display: block;
+        }
+        /* Styling of the hamburger menu */
+        .hamburger_Content{
+            box-shadow: -20px 20px 20px 20px  #0000008a;
+            overflow-y: auto;
+        }
+        .hamburger_Content ul{
+            width: 80%;
+            margin: auto;
+            justify-content: flex-start;
+            padding-top: 80px;
+            gap: 40px;
+            overflow-y: auto;
+        }
+        
+        .navNavigationsItems_li{
+            width: 100%;
+        }
+        .navNavigationsItems_li a{
+            display: flex;
+            width: 100%;
+            margin: auto;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 25px;
+        }
+        /* navDropDown Logic */
+        .navDropDownDisable{
+            position: static;
+            width: 100%;
+            margin: 20px 0px;
+        }
 
 
         /* Hero Section */
@@ -1224,6 +1317,7 @@ button{
         }
         .communitySectionContainer_Right{
             align-items: center;
+            width: 100%;
         }
         .numbers{
             font-size: 90px;
@@ -1259,6 +1353,9 @@ button{
         .thirivingCommunitySection_DescriptionSection{
             width: 90%;
         }
+        .footerSection{
+            width: 90%;
+        }
 
 
         /* buildForGrowthSection */
@@ -1286,6 +1383,9 @@ button{
         }
 
         /* thirivingCommunitySection */
+        .thirivingCommunitySection_Wrapper{
+            height: auto;
+        }
         .thirivingCommunitySection_Description{
             width: 100%;
         }
@@ -1377,6 +1477,15 @@ button{
             font-size: 30px;
         }
         /* Hero Section */
+        .mainBannerContainer{
+            height: 70vh;
+        }
+        .mainBannerContainer_Left{
+            height: 70vh;
+        }
+        .mainBannerContainer_Right{
+            height: 70vh;
+        }
         .mainBannerContainerContent_Text {
             width: 80%;
         }
@@ -1407,6 +1516,9 @@ button{
         .numberHeading {
             font-size: 15px;
         }
+        .massAdoptionSection{
+            margin: 70px auto;
+        }
 
 
         .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container {
@@ -1430,8 +1542,28 @@ button{
         .buildForGrowthSection_CompanyList_imgContainer {
             width: 23%;
         }
+        .buildForGrowthSection_CardSection_Left{
+            height: 230px;
+        }
+        .buildForGrowthSection_CardSection_Right{
+            height: 310px;
+        }
+        .Box2_Box3_Box4_Wrapper{
+            gap: 20px;
+        }
     }
 
+    @media (max-width: 400px){
+        .mainHeading{
+            font-size: 30px;
+        }
+        .subHeading{
+            font-size: 25px;
+        }
+        .buildForGrowthSection_Upper_FilterButton{
+            padding: 8px 10px;
+        }
+    }
 
 @media only screen and (max-width: 950px) and (min-width: 768px){
     .mainHeading{
