@@ -129,7 +129,7 @@ Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e, btn_index) => {
   });
 });
 
-//
+// Code for footer Language DropDown:
 let isLangDropDown = false;
 let footerSection_Box4_DropDownIcon = document.getElementsByClassName(
   "footerSection_Box4_DropDownIcon"
@@ -140,11 +140,17 @@ icon.addEventListener("click", (e) => {
     let footerSection_Box4_DropDownIcon_Menu = (document.getElementsByClassName(
       "footerSection_Box4_DropDownIcon_Menu"
     )[0].style.display = "block");
+    icon.style.transform = "rotate(180deg)";
+    icon.style.transition = "all .3s";
+
     isLangDropDown = true;
   } else {
     let footerSection_Box4_DropDownIcon_Menu = (document.getElementsByClassName(
       "footerSection_Box4_DropDownIcon_Menu"
     )[0].style.display = "none");
+    icon.style.transform = "rotate(0deg)";
+    icon.style.transition = "all .3s";
+
     isLangDropDown = false;
   }
 });
@@ -168,127 +174,123 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-// Code for animate the numbers of community section:
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   let communitySection = document.querySelector(
-//     "communitySectionContainerWrapper"
-//   );
-//   let numbers = document.querySelectorAll("numbers");
-
-//   let observe = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           animateNumbers();
-//           observe.unobserve(communitySection);
-//         }
-//       });
-//     },
-//     {
-//       threshold: 0.3,
-//     }
-//   );
-
-//   let animateNumbers=()=>{
-//     numbers.forEach((number)=>{
-//       let targetText = number.textContent;
-//       let targetValue = parseFloat(targetText.replace(/[0-9.]/g,""));
-      
-
-//     })
-//   }
-
-
-
-// });
-
-
-
-
+//
 document.addEventListener("DOMContentLoaded", () => {
-  // Get the section that contains the numbers
+  let communitySection = document.querySelector(
+    ".communitySectionContainerWrapper"
+  );
+  let numbers = document.querySelectorAll(".numbers");
+
+  let observe = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateNumbers();
+          observe.unobserve(communitySection);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    }
+  );
+
+  let animateNumbers=()=>{
+    numbers.forEach((number)=>{
+      let targetText = number.textContent;
+      let targetValue = parseFloat(targetText.replace(/[^0-9.]/g), "");
+      let prefix = targetText.startsWith("$") ? "$" : "";
+      let suffix = targetText.replace(/[0-9.]/g,"").replace(prefix, "");
+
+      let current = 0;
+      let increment  = targetText/300;
+
+      let updateNumber=()=>{
+        current+=increment;
+        if(current < targetValue){
+          number.textContent = prefix + current + suffix; 
+          setTimeout((e) => {
+            updateNumber();
+          }, 60);
+        }
+      
+      }
+      updateNumber();
+    })
+  }
+
+
+
+});
+
+// Code for animate the numbers of community section:
+document.addEventListener("DOMContentLoaded", () => {
   const communitySection = document.querySelector(
     ".communitySectionContainerWrapper"
   );
-  // Get all elements with the class 'numbers'
+
   const numbers = document.querySelectorAll(".numbers");
 
-  // Create an Intersection Observer to watch when the communitySection comes into view
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // Check if the section is intersecting (i.e., visible in the viewport)
         if (entry.isIntersecting) {
-          // Call the function to animate the numbers
           animateNumbers();
-          // Stop observing the section after animating the numbers
+
           observer.unobserve(communitySection);
         }
       });
     },
     {
-      threshold: 0.3, // Trigger when 30% of the section is visible
+      threshold: 0.25,
     }
   );
 
-  // Start observing the communitySection
   observer.observe(communitySection);
 
-  // Function to animate the numbers
   function animateNumbers() {
-    // Loop through each number element
     numbers.forEach((number) => {
-      // Extract the target number and suffix
       const targetText = number.textContent;
       const targetValue = parseFloat(targetText.replace(/[^0-9.]/g, ""));
       const prefix = targetText.startsWith("$") ? "$" : "";
       const suffix = targetText.replace(/[0-9.]/g, "").replace(prefix, "");
 
-      // Calculate the increment value (adjust the division for speed)
-      const increment = targetValue / 400; // Slowed down by increasing the division from 200 to 400
-      let current = 0; // Start from 0
+      const increment = targetValue / 300;
+      let current = 0;
 
-      // Function to update the number
       function updateNumber() {
-        current += increment; // Increment the current value
+        current += increment;
         if (current < targetValue) {
-          // If the current value is less than the target, update the text content with the appropriate formatting
           number.textContent = prefix + formatNumber(current) + suffix;
-          // Use setTimeout to create a smooth animation
-          setTimeout(updateNumber, 16); // Approximately 60 frames per second
+
+          setTimeout(updateNumber, 16);
         } else {
-          // Set the text content to the target value with the appropriate formatting when the animation is done
           number.textContent = prefix + formatFinalNumber(targetValue) + suffix;
         }
       }
-
-      // Start the update process
       updateNumber();
     });
   }
 
-  // Function to format the number with commas and appropriate suffixes during animation
   function formatNumber(num) {
     if (num >= 1000000) {
       return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M+";
     } else if (num >= 1000) {
       return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K+";
     } else if (num < 1 && num > 0) {
-      return num.toFixed(5).replace(/\.?0+$/, ""); // Ensure 5 decimal places for small numbers
+      return num.toFixed(5).replace(/\.?0+$/, ""); 
     } else {
       return num.toLocaleString();
     }
   }
 
-  // Function to format the final number with appropriate suffixes
   function formatFinalNumber(num) {
     if (num >= 1000000) {
       return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M+";
     } else if (num >= 1000) {
       return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K+";
     } else if (num < 1 && num > 0) {
-      return num.toFixed(5).replace(/\.?0+$/, ""); // Ensure 5 decimal places for small numbers
+      return num.toFixed(5).replace(/\.?0+$/, ""); 
     } else {
       return num.toLocaleString();
     }
