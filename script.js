@@ -81,15 +81,33 @@ function showSlides(n) {
     slideIndex = sliderCardSection_Card.length;
   }
   for (i = 0; i < sliderCardSection_Card.length; i++) {
-    sliderCardSection_Card[i].style.display = "none";
-    sliderCardSection_Card[i].style.opacity = "0";
+    sliderCardSection_Card[i].style.left = "0%";
+    sliderCardSection_Card[i].style.opacity = "1";
   }
   sliderCardSection_Card[slideIndex - 1].style.display = "flex";
   sliderCardSection_Card[slideIndex - 1].style.opacity = "1";
   sliderCardSection_Card[slideIndex - 1].style.trasition = "all .3s";
 }
 
-// Code for buildForGrowthSection_Upper_FilterButton:
+
+
+
+// // 
+// let sliderCardSection_Card = document.getElementsByClassName("sliderCardSection_Card");
+
+// const nextSlide = () =>{
+//   let currentSlide = 0;
+//   if(currentSlide<2){
+//     return currentSlide++;
+//   }
+//   else{
+//     currentSlide = 0;
+//     return 1;
+//   }
+// }
+
+
+
 // Code for buildForGrowthSection_Upper_FilterButton:
 let buildForGrowthSection_Upper_FilterButton = document.getElementsByClassName(
   "buildForGrowthSection_Upper_FilterButton"
@@ -202,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(communitySection);
 
   function animateNumbers() {
-    numbers.forEach((number) => {
+    numbers.forEach((number,index) => {
       const targetText = number.textContent;
       console.log(targetText );
       
@@ -214,18 +232,31 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(suffix );
       
 
-      const increment = targetValue / 300;
+      const increment = 1;
+      const incrementPoints = targetValue/300;
       let current = 0;
 
       function updateNumber() {
+        if(index == 0 || index ==1){
         current += increment;
         if (current < targetValue) {
-          number.textContent = prefix + formatNumber(current) + suffix;
-
-          setTimeout(updateNumber, 16);
-        } else {
+            number.textContent = prefix + formatNumber(current) + suffix;
+            setTimeout(updateNumber, 100);
+          }
+        else {
           number.textContent = prefix + formatFinalNumber(targetValue) + suffix;
         }
+        }
+        else if(index == 2){
+          current += incrementPoints;
+          if (current < targetValue) {
+            number.textContent = prefix + formatNumber(current) + suffix;
+            setTimeout(updateNumber, 10);
+          }
+        else {
+          number.textContent = prefix + formatFinalNumber(targetValue) + suffix;
+        }
+        } 
       }
       updateNumber();
     });

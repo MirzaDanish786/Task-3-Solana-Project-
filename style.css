@@ -256,13 +256,22 @@ button{
 .companyListSection_Text{
     color: #618ADC;
 }
+.companyListSection_Logos{
+    overflow-x: auto;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 .companyListSection_Logos ul{
     display: flex;
+    width: fit-content;
     gap: 30px;
     padding: 5px 20px;
 }
 .companyListSection_Logos ul li{
-    /* width: 88.88px; */
+    overflow-x: auto;
+
+    width: 88.88px;
     list-style: none;
 }
 .companyListSection_Logos ul li img{
@@ -271,10 +280,13 @@ button{
 }
 
 /* Styling sliderCardSection */
+.sliderCardSection_Wrapper{
+    position: relative;
+
+}
 .sliderCardSection{
     width: 80%;
     margin: auto;
-    position: relative;
     display: flex;
 }
 .fade {
@@ -293,11 +305,12 @@ button{
     display: flex;
     gap: 60px;
     border-radius: 16px;
+    position: relative;
 
 }
 .previousIcon{
     position: absolute;
-    left: -40px;
+    left: 7%;
     top: 42%;
     cursor: pointer;
     width: 26px;
@@ -320,7 +333,7 @@ button{
     justify-content: center;
     align-items: center;
     position: absolute;
-    right:-40px;
+    right:7%;
     top: 42%;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -652,6 +665,9 @@ button{
     border-radius: 12px;
     height: 391.42px;
 }
+.forSmallScreens{
+    display: none;
+}
 .subCard1{
     grid-area: subCard1;
 }
@@ -676,6 +692,7 @@ button{
    border-top-left-radius: 12px;
    border-top-right-radius: 12px;
 }
+
 .caseStudiesSection_Grid_subCards_img_bg_Heading img{
     width: 20px;
 
@@ -844,6 +861,10 @@ button{
 .thirivingCommunitySection{
     width: 100vw;
     margin: auto;
+    animation: scroll 10s linear infinite;
+    display: flex;
+    width: calc(300px * 6);
+
 }
 .thirivingCommunitySection_GridImages{
     display: grid;
@@ -852,7 +873,7 @@ button{
     "card2 card3 card3 card5 card6 card6";
     gap: 20px;
     margin-top: 30px;
-    animation: slider 10s linear infinite;
+    /* animation: slider 10s linear infinite; */
     position: relative;
     width:fit-content;
     /* overflow-x: auto; */
@@ -866,6 +887,15 @@ button{
     animation: slider 10s linear infinite;
 } */
 
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-300px * 3));
+	}
+}
 
 @keyframes slider {
     /* 0%{
@@ -1224,6 +1254,13 @@ button{
     }
 
 }
+@media (max-width:1100px){
+
+    .companyListSection_Logos{
+        box-shadow: inset -20px 0px 20px 0px #ffffff94, inset -20px 0px 20px 20px #000000;
+        justify-content: unset;
+    }
+}
 
 @media (max-width: 1024px){ 
     :root{
@@ -1346,11 +1383,11 @@ button{
         .caseStudiesSection_Button a{
             font-size: 12px;
         }
-
+/* 
         .companyListSection_Logos ul{
             flex-wrap: wrap;
             justify-content: center;
-        }
+        } */
         /*sliderCardSection:*/
         .sliderCardSection_Card{
             flex-direction: column;
@@ -1428,6 +1465,7 @@ button{
         }
         .buildForGrowthSection_CardSection_Left{
             width: 100%;
+            height: 300px;
         }
         .buildForGrowthSection_CardSection_Left_LogoContainer_Logo1Container{
             width: 55px;
@@ -1440,6 +1478,8 @@ button{
         }
         .buildForGrowthSection_CardSection_Right{
             width: 100%;
+            height: 300px;
+
         }
 
         /* thirivingCommunitySection */
@@ -1465,18 +1505,49 @@ button{
         .caseStudiesSection_Grid_MainCard_Right_Content{
             width: 100%;
         }
+        .caseStudiesSection_Grid_MainCard_Right{
+            display: none;
+
+        }
+        .caseStudiesSection_Grid_MainCard_Left{
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: self-start;
+            gap: 24px;
+        }
         .caseStudiesSection_Grid_subCards_TextContainer{
             justify-content: space-between;
         }
+        .caseStudiesSection_Grid_MainCard_Left_Text{
+            font-size: 42px;
+        }
         .caseStudiesSection_Grid_MainCard_Right_Content{
-            font-size: 30px;
+            font-size: 18px;
+        }
+        .caseStudiesSection_Grid_subCards{
+            height: 250px;
         }
         .caseStudiesSection_Grid_subCards_img_bg_Text{
             font-size: 42px;
         }
         .caseStudiesSection_Grid_subCards_Text {
             font-size: 18px;
+            font-weight: 400;
         }
+        .caseStudiesSection_Grid_subCards_img_bg{
+            height: 100%;
+            gap: 24px;
+            border-radius: 12px;
+        }
+        .caseStudiesSection_Grid_subCards_TextContainer{
+            display: none;
+        }
+         .forSmallScreens{
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+         }
     }
     @media (max-width: 630px){
 
@@ -1687,6 +1758,9 @@ button{
         } 
 }
 @media (max-width: 425px){
+    .buildForGrowthSection_CardSection_Right {
+        height: 330px;
+    }
     @keyframes slider {
         from{
             transform: translateX(-100%);
