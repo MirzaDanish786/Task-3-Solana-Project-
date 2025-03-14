@@ -247,36 +247,48 @@ button{
 
 
 /* Styling of the companyListSection */
-.companyListSection{
+/* Styling of the companyListSection */
+.companyListSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
 }
-.companyListSection_Text{
+.companyListSection_Text {
     color: #618ADC;
 }
-.companyListSection_Logos{
-    overflow-x: auto;
+.companyListSection_Logos {
+    overflow: hidden;
     width: 100vw;
     display: flex;
     justify-content: center;
 }
-.companyListSection_Logos ul{
+.companyListSection_Logos ul {
     display: flex;
-    width: fit-content;
+    /* width: 200%; */
     gap: 30px;
     padding: 5px 20px;
+    /* animation: scrollLeft 20s linear infinite; */
 }
-.companyListSection_Logos ul li{
-    overflow-x: auto;
-
+.companyListSection_Logos ul li {
     width: 88.88px;
     list-style: none;
 }
-.companyListSection_Logos ul li img{
+.companyListSection_Logos ul li img {
     width: 100%;
     object-fit: contain;
+}
+.animation_li{
+    display: none;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Styling sliderCardSection */
@@ -288,15 +300,10 @@ button{
     width: 80%;
     margin: auto;
     display: flex;
+    overflow: hidden;
 }
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
+
+
 .sliderCardSection_Card{
     padding: 40px;
     background-color: #1B1622;
@@ -306,6 +313,7 @@ button{
     gap: 60px;
     border-radius: 16px;
     position: relative;
+    transition: all .3s;
 
 }
 .previousIcon{
@@ -428,6 +436,9 @@ button{
     gap: 20px;
     width: 50%;
 }
+.activeAccounts_Heading, .NFTS_Heading{
+    width: 20%;
+}
 .activeAccounts{
     display: flex;
     flex-direction: column;
@@ -507,6 +518,7 @@ button{
 }
 .massAdoptionSection_Heading{
     margin-top: 35px;
+    width: 255px;
 }
 .massAdoptionSection_Heading_Text{
     font-size: 16px;
@@ -633,11 +645,7 @@ button{
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
 }
-.caseStudiesSection_Grid_MainCard_Left_Content{
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
-}
+
 .caseStudiesSection_Grid_MainCard_Left_Heading{
     display: flex;
     gap: 10px;
@@ -861,10 +869,14 @@ button{
 .thirivingCommunitySection{
     width: 100vw;
     margin: auto;
-    animation: scroll 10s linear infinite;
     display: flex;
-    width: calc(300px * 6);
-
+    flex-direction: column;
+}
+.thirivingCommunitySection_GridImages_Wrapper{
+    display: flex;
+    width: fit-content;
+    gap: 20px;
+    animation: slide 20s linear infinite;
 }
 .thirivingCommunitySection_GridImages{
     display: grid;
@@ -873,44 +885,19 @@ button{
     "card2 card3 card3 card5 card6 card6";
     gap: 20px;
     margin-top: 30px;
-    /* animation: slider 10s linear infinite; */
     position: relative;
     width:fit-content;
-    /* overflow-x: auto; */
 }
-.thirivingCommunitySection_GridImages:hover{
+/* .thirivingCommunitySection_GridImages:hover{
     animation-play-state: paused;
-}
-
-
-/* .thirivingCommunitySection_GridImages_Card1,.thirivingCommunitySection_GridImages_Card2_imgContainer, .thirivingCommunitySection_GridImages_Card4_imgContainer,.thirivingCommunitySection_GridImages_Card5, .thirivingCommunitySection_GridImages_Card6_imgContainer{
-    animation: slider 10s linear infinite;
 } */
+@keyframes slide {
 
-
-@keyframes scroll {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(calc(-300px * 3));
-	}
-}
-
-@keyframes slider {
-    /* 0%{
-       left: -100vw;
-        
+    0%{
+        transform: translateX(0%);
     }
     100%{
-        left: 100vw;
-        
-    } */
-    from{
-        transform: translateX(-100%);
-    }
-    to{
-        transform: translateX(80%);
+        transform: translateX(-50%);
     }
 }
 /* Card1 */
@@ -1119,6 +1106,7 @@ button{
     display: flex;
     gap: 4px;
     position: relative;
+    cursor: pointer;
 }
 .Box2_Box3_Box4_Wrapper{
     display: flex;
@@ -1143,6 +1131,7 @@ button{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 110px;
 }
 .footerSection_Box4_DropDownIcon_Menu ul li{
     list-style: none;
@@ -1161,20 +1150,9 @@ button{
 @media (min-width:1500px){
     .sliderCardSection_Card{
         width: 70%;
-        min-width: auto;
     }
-    .previousIcon{
-        left: 180px;
-    }
-    .nextIcon{
-        right: 180px;
-    }
-    /* .communitySectionContainer{
-        justify-content: center;
-    }
-    .communitySectionContainer_Right{
-        width: 30%;
-    } */
+
+
      .communitySectionContainer {
          width: 60%;
         }
@@ -1183,6 +1161,10 @@ button{
     }
     .massAdoptionSection_CardGrid{
         width: 50%;
+    }
+    .sliderCardSection_Card_TextContainer{
+        gap: 30px;
+        justify-content: center;
     }
 }
 
@@ -1252,12 +1234,14 @@ button{
     .buildForGrowthSection_CardSection_Left_LogoContainer{
         gap: 20px;
     }
+    .thirivingCommunitySection_Wrapper{
+        height: auto;
+    }
 
 }
 @media (max-width:1100px){
 
     .companyListSection_Logos{
-        box-shadow: inset -20px 0px 20px 0px #ffffff94, inset -20px 0px 20px 20px #000000;
         justify-content: unset;
     }
 }
@@ -1265,6 +1249,13 @@ button{
 @media (max-width: 1024px){ 
     :root{
        --buttonPading: 12.5px 15px;
+    }
+    .companyListSection_Logos ul{
+        animation: scrollLeft 20s linear infinite;
+    }
+    .animation_li{
+        display: flex;
+        gap: 20px;
     }
     .caseStudiesSection_Grid_MainCard_Left{
         height: 230px;
@@ -1329,6 +1320,16 @@ button{
         .mainBannerContainer_Right{
             height: 60vh;
         }
+        .massAdoptionSection_Heading{
+            width: 100%;
+        }
+        .sliderCardSection_Card_TextContainer_Heading_ButtonSection{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sliderCardSection_Card_TextContainer_ButtonSection{
+            text-align: center;
+        }
 
 
         .navNavigationsItems{
@@ -1349,8 +1350,8 @@ button{
             padding: 80px 5px;
             gap: 40px;
             overflow-y: auto;
-            
         }
+     
         
         .navNavigationsItems_li{
             width: 80%;
@@ -1401,6 +1402,16 @@ button{
         .sliderCardSection_Card_TextContainer{
             width: 100%;
             gap: 20px;
+            text-align: start;
+        }
+        .massAdoptionSection_CardGrid{
+            align-items: unset;
+        }
+        .previousIcon{
+            left: 4%;
+        }
+        .nextIcon{
+            right: 4%;
         }
 
         
@@ -1413,7 +1424,7 @@ button{
             flex-direction: column;
         }
         .communitySectionContainer_Right{
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
         }
         .numbers{
@@ -1422,6 +1433,9 @@ button{
         }
         .numberHeading{
             font-size: 20px;
+        }
+        .activeAccounts_Heading, .NFTS_Heading{
+            width: 100%;
         }
 
         /* massAdoption */
@@ -1435,6 +1449,9 @@ button{
         .massAdoptionSection_CardGrid {
             justify-items: flex-start;
             margin-top: 50px;
+        }
+        .massAdoptionSection_Center{
+            gap: 86px;
         }
 
         /* casestudiessection */
@@ -1607,6 +1624,15 @@ button{
         .subHeading{
             font-size: 30px;
         }
+        .hamburger{
+            width: 28px;
+        }
+        .navNavigationsItems_li a{
+            font-size: 20px;
+        }
+        .navDropDownEnable div a {
+            font-size: 18px;
+        }
         /* Hero Section */
        
         .mainBannerContainerContent_Text {
@@ -1621,14 +1647,13 @@ button{
         /* sliderCard */
         .sliderCardSection_Card{
             padding: 10px;
-            min-width: auto;
             width: 85%;
         }
         .previousIcon {
-            left: -15px;
+            left: 5px;
         }
         .nextIcon{
-            right: -15px;
+            right: 5px;
         }
         .sliderCardSection_Card_TextContainer_Heading{
             font-size: 20px;
@@ -1644,8 +1669,15 @@ button{
         .communitySectionContainer_Left{
             width: 100%;
         }
+        .massAdoptionSection_CardGrid{
+            display: flex;
+            flex-direction: column;
+        }
         .numberHeading {
             font-size: 15px;
+        }
+        .massAdoptionSection_Center{
+            gap: 20px;
         }
         .massAdoptionSection{
             margin: 70px auto;
@@ -1679,9 +1711,16 @@ button{
         .buildForGrowthSection_CardSection_Right{
             height: 310px;
         }
+        .buildForGrowthSection_CardSection_Right_Text{
+            font-size: 17px;
+        }
+        .thirivingCommunitySection_Description{
+            text-align: start;
+        }
         .Box2_Box3_Box4_Wrapper{
             gap: 20px;
         }
+
     }
 
     @media (max-width: 400px){
@@ -1705,68 +1744,11 @@ button{
     }
 }
 
-/* Media Quries for the slider animation */
-@media (max-width: 2560px){
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(135%);
-        }
-    }
-}
-@media (max-width: 1920px){
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(105%);
-        }
-    }
-}
-@media (max-width: 1440px){
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(80%);
-        }
-    }
-}
-
-@media (max-width: 1024px){
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(55%);
-        }
-    }
-}
-@media (max-width: 768px){
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(42%);
-        }
-        } 
-}
 @media (max-width: 425px){
     .buildForGrowthSection_CardSection_Right {
         height: 330px;
     }
-    @keyframes slider {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(23%);
-        }
-        } 
+    .footerSection_Box4_DropDownIcon_Menu ul{
+        width: auto;
+    }
 }

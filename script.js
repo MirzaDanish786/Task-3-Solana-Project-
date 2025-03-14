@@ -41,6 +41,19 @@ Array.from(navNavigationsItems_li).forEach((e, index) => {
   });
 });
 
+let mainSection = document.getElementsByTagName("main")[0];
+mainSection.addEventListener('click',()=>{
+  let navDropDownDisable = document.getElementsByClassName("navDropDownDisable");
+  Array.from(navDropDownDisable).forEach((e)=>{
+    e.classList.remove("navDropDownEnable");
+  })
+  Array.from(navNavigationsItems_img).forEach((e)=>{
+    e.style.transform = " rotate(0deg)";
+  })
+
+})
+
+// Code for dismiss the dropDown when click one of the item
 let navDropDownDisable = document.getElementsByClassName("navDropDownDisable");
 Array.from(navDropDownDisable).forEach((e) => {
   let div = e.getElementsByTagName("div");
@@ -57,54 +70,34 @@ Array.from(navDropDownDisable).forEach((e) => {
   });
 });
 
-// Code for slide the card when click on the buttons:
-let slideIndex = 1;
-showSlides(slideIndex);
+// Code for the slide the card:
+ const cards = document.querySelectorAll('.sliderCardSection_Card');
+  let currentIndex = 0;
 
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  let i;
-  let sliderCardSection_Card = document.getElementsByClassName(
-    "sliderCardSection_Card"
-  );
-  if (n > sliderCardSection_Card.length) {
-    slideIndex = 1;
+  function updateCards() {
+    cards.forEach((card, index) => {
+      card.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
   }
-  if (n < 1) {
-    slideIndex = sliderCardSection_Card.length;
+  function changeIndex(direction) {
+    if (direction === 'next'){
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+    } else if (direction === 'previous') {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = cards.length - 1;
+      }
+    }
+    updateCards();
   }
-  for (i = 0; i < sliderCardSection_Card.length; i++) {
-    sliderCardSection_Card[i].style.left = "0%";
-    sliderCardSection_Card[i].style.opacity = "1";
-  }
-  sliderCardSection_Card[slideIndex - 1].style.display = "flex";
-  sliderCardSection_Card[slideIndex - 1].style.opacity = "1";
-  sliderCardSection_Card[slideIndex - 1].style.trasition = "all .3s";
-}
-
-
-
-
-// // 
-// let sliderCardSection_Card = document.getElementsByClassName("sliderCardSection_Card");
-
-// const nextSlide = () =>{
-//   let currentSlide = 0;
-//   if(currentSlide<2){
-//     return currentSlide++;
-//   }
-//   else{
-//     currentSlide = 0;
-//     return 1;
-//   }
-// }
+  document.querySelector('.nextIcon').addEventListener('click', () => changeIndex('next'));
+  document.querySelector('.previousIcon').addEventListener('click', () => changeIndex('previous'));
+  updateCards();
 
 
 
@@ -112,7 +105,13 @@ function showSlides(n) {
 let buildForGrowthSection_Upper_FilterButton = document.getElementsByClassName(
   "buildForGrowthSection_Upper_FilterButton"
 );
-let buildForGrowthSection_CardSection_Right_Text =
+
+// Outline to represent the default active tab:
+buildForGrowthSection_Upper_FilterButton[0].style.outline =
+    "2px solid #A962FF";
+
+
+    let buildForGrowthSection_CardSection_Right_Text =
   document.getElementsByClassName(
     "buildForGrowthSection_CardSection_Right_Text"
   )[0];
@@ -124,9 +123,11 @@ Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e, btn_index) => {
     buildForGrowthSection_CardSection_Right_Text.innerHTML = "";
 
     // Removing the  oulines on the buttons
-    Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e) => {
+    Array.from(buildForGrowthSection_Upper_FilterButton).forEach((e,index) => {
       e.style.outline = "none";
     });
+    
+    
 
     let append = "";
     if (btn_index == 0) {
@@ -153,7 +154,8 @@ let footerSection_Box4_DropDownIcon = document.getElementsByClassName(
   "footerSection_Box4_DropDownIcon"
 )[0];
 let icon = footerSection_Box4_DropDownIcon.getElementsByTagName("img")[0];
-icon.addEventListener("click", (e) => {
+let footerSection_Box4 = document.getElementsByClassName("footerSection_Box4")[0];
+footerSection_Box4.addEventListener("click", (e) => {
   if (!isLangDropDown) {
     let footerSection_Box4_DropDownIcon_Menu = (document.getElementsByClassName(
       "footerSection_Box4_DropDownIcon_Menu"
